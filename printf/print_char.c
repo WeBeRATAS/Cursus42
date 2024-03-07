@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 14:39:55 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/02/28 15:50:48 by rbuitrag         ###   ########.fr       */
+/*   Created: 2024/02/29 13:13:46 by rbuitrag          #+#    #+#             */
+/*   Updated: 2024/03/07 15:49:58 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_char(int c)
 {
-	if (write(1, &c, 1) < 0)
+	if ((write(1, &c, 1) < 0))
 		return (-1);
 	else
 		return (1);

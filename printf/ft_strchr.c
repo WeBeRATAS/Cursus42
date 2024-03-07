@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 11:29:59 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/02/24 15:15:05 by rbuitrag         ###   ########.fr       */
+/*   Created: 2024/02/29 12:59:08 by rbuitrag          #+#    #+#             */
+/*   Updated: 2024/02/29 13:18:14 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdarg.h>
-# include <stdint.h>
+char	*ft_strchr(const char *s, int c)
+{
+	unsigned char	i;
+	int				let;
 
-int	print_char(int c);
-int	print_str(char *str);
-int	p_digit(long n, int base, int controlhex);
-
-#endif
+	i = 0;
+	let = (char)c;
+	while (s[i] != '\0')
+	{
+		if (s[i] == let)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (let == '\0')
+		return ((char *)&s[i]);
+	else
+		return (NULL);
+}

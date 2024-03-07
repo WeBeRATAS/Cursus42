@@ -6,7 +6,7 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:55:30 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/02/24 16:10:51 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:04:39 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,21 @@ int	print_pointer(unsigned long long ptr)
 
 	print_length = 0;
 	print_length += write(1, "0x", 2);
+	if (print_length < 0)
+		return (-1);
 	if (ptr == 0)
+	{
 		print_length += write(1, "0", 1);
+		if (print_length < 0)
+			return (-1);
+	}
 	else
 	{
 		ft_put_ptr(ptr);
 		print_length += ft_ptr_len(ptr);
 	}
-	return (print_length);
+	if (print_length < 0)
+		return (-1);
+	else
+		return (print_length);
 }

@@ -6,7 +6,7 @@
 #    By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 12:09:04 by rbuitrag          #+#    #+#              #
-#    Updated: 2024/02/24 11:34:56 by rbuitrag         ###   ########.fr        #
+#    Updated: 2024/02/29 13:17:31 by rbuitrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ NAME = libftprintf.a
 
 CC = gcc
 
-HEADER = libftprint.h
+HEADER = ft_printf.h
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -c
 
-FILES = ft_printf.c 
+FILES = ft_printf.c p_digit.c print_str.c print_char.c print_pointer.c \
+		ft_strchr.c
 
 OFILES = $(FILES:.c=.o)
 
