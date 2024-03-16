@@ -6,7 +6,7 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 11:29:59 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/02/29 12:57:55 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/16 12:20:36 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 # include <stdarg.h>
 # include <stdint.h>
 
-int		print_char(int c);
-int		print_str(char *str);
-int		p_digit(long n, int base, int controlhex);
-int		print_pointer(unsigned long long ptr);
-int		ft_printf(const char *str, ...);
-char	*ft_strchr(const char *s, int c);
+int 	print_char(int c);
+int 	print_str(char *str);
+int 	p_digit(long n);
+int 	print_unsigned(unsigned int n);
+int 	print_pointer(unsigned long long ptr);
+int 	p_hexa(unsigned int num, const char word);
+char    *ft_strchr(const char *s, int c);
 
 #endif

@@ -19,8 +19,12 @@
 # include <stdarg.h>
 # include <stdint.h>
 
-int	print_char(int c);
-int	print_str(char *str);
-int	p_digit(long n, int base, int controlhex);
+int 	print_char(int c);
+int 	print_str(char *str);
+int 	p_digit(long n);
+int 	print_unsigned(unsigned int n);
+int 	print_pointer(unsigned long long ptr);
+int 	p_hexa(unsigned int num, const char word);
+char    *ft_strchr(const char *s, int c);
 
 #endif

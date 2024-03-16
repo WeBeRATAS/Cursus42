@@ -19,7 +19,7 @@ HEADER = ft_printf.h
 FLAGS = -Wall -Werror -Wextra -c
 
 FILES = ft_printf.c p_digit.c print_str.c print_char.c print_pointer.c \
-		ft_strchr.c
+		ft_strchr.c p_hexa.c print_unsigned.c 
 
 OFILES = $(FILES:.c=.o)
 

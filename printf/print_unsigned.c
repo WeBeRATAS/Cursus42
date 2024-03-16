@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   print_unsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 13:13:46 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/16 10:38:52 by rbuitrag         ###   ########.fr       */
+/*   Created: 2024/03/16 11:44:32 by rbuitrag          #+#    #+#             */
+/*   Updated: 2024/03/16 11:44:34 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char(int c)
+int	print_unsigned(unsigned int n)
 {
-	if (write(1, &c, 1) < 0)
-		return (-1);
-	else
-		return (1);
-}
-/*
-int main(void)
-{
-	char	c[40];
+	int	size;
 
-	c = "\001\002\007\v\010\f\r\n";
-	printf("%s\n", c);
-	print_char((int)c);
-	return (0);
-}*/
+	size = 0;
+	if (n == 0)
+		size += print_char('0');
+	else
+	{
+		if (n / 10 != 0)
+			print_unsigned(n / 10);
+		print_char((n % 10) + '0');
+		while (n > 0)
+		{
+			n /= 10;
+			size++;
+		}
+	}
+	return (size);
+}

@@ -6,7 +6,7 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:48:27 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/07 15:02:05 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/16 12:16:44 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ static int	print_format(char type, va_list ap)
 	else if (type == 's')
 		count += print_str(va_arg(ap, char *));
 	else if (type == 'd' || type == 'i')
-		count += p_digit((long)(va_arg(ap, int)), 10, 0);
-	else if (type == 'x')
-		count += p_digit((long)(va_arg(ap, unsigned int)), 16, 0);
-	else if (type == 'X')
-		count += p_digit((long)(va_arg(ap, unsigned int)), 16, 1);
+		count += p_digit((long)(va_arg(ap, int)));
+	else if (type == 'x' || type == 'X')
+		count += p_hexa((va_arg(ap, unsigned int)), type);
 	else if (type == 'u')
-		count += p_digit((unsigned long)(va_arg(ap, unsigned int)), 10, 0);
+		count += print_unsigned((va_arg(ap, unsigned int)));
 	else if (type == 'p')
 		count += print_pointer(va_arg(ap, unsigned long long));
 	else if (type == '%')
@@ -50,7 +48,7 @@ int	ft_printf(const char *str, ...)
 	va_start(ap, str);
 	count = 0;
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i] != '\0' && count >= 0)
 	{
 		if (str[i] == '%')
 		{
@@ -63,8 +61,8 @@ int	ft_printf(const char *str, ...)
 		else
 			count += print_char(str[i]);
 		i++;
-		if (count == -1)
-			return (-1);
+		if (count < 0)
+			count = -1;
 	}
 	va_end(ap);
 	return (count);
