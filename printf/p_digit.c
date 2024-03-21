@@ -6,7 +6,7 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:36:46 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/16 10:50:50 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/17 14:45:50 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,17 @@ int	p_digit(long n)
 	return (size);
 }
 /*
-int	main (void)
+int	main(void)
 {
 	int	num;
-	int cont;
+	int	cont;
 
-	num = 4554;
-
+	num = -10;
+	cont = 0;
 	cont = printf("Numero %d\n", num);
 	printf("cont de printf: %d\n", cont);
-	cont = p_digit(num, 10, 0);
+	cont = 0;
+	cont = p_digit(num);
 	printf("\ncont de pdigit: %d\n", cont);
 	return (0);
 }*/

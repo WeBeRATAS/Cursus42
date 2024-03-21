@@ -6,7 +6,7 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:48:27 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/16 12:16:44 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:17:14 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,57 +15,49 @@
 
 static int	print_format(char type, va_list ap)
 {
-	int		count;
-
-	count = 0;
 	if (type == 'c')
-		count += print_char(va_arg(ap, int));
+		return (print_char(va_arg(ap, int)));
 	else if (type == 's')
-		count += print_str(va_arg(ap, char *));
+		return (print_str(va_arg(ap, char *)));
 	else if (type == 'd' || type == 'i')
-		count += p_digit((long)(va_arg(ap, int)));
+		return (p_digit((long)(va_arg(ap, int))));
 	else if (type == 'x' || type == 'X')
-		count += p_hexa((va_arg(ap, unsigned int)), type);
+		return (p_hexa((va_arg(ap, unsigned int)), type));
 	else if (type == 'u')
-		count += print_unsigned((va_arg(ap, unsigned int)));
+		return (print_unsigned((va_arg(ap, unsigned int))));
 	else if (type == 'p')
-		count += print_pointer(va_arg(ap, unsigned long long));
+		return (print_pointer(va_arg(ap, unsigned long long)));
 	else if (type == '%')
-		count += print_char('%');
-	else
-		return (-1);
-	return (count);
+		return (print_char('%'));
+	return (-1);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
-	int		count;
+	int		count_print;
 	int		i;
+	int		len_print;
 
-	if (!str)
-		return (-1);
 	va_start(ap, str);
-	count = 0;
+	count_print = 0;
 	i = 0;
-	while (str[i] != '\0' && count >= 0)
+	while (str[i])
 	{
 		if (str[i] == '%')
 		{
-			if (ft_strchr("cspdiuxX%", str[i + 1]))
-			{
-				count += print_format(str[i + 1], ap);
-				i++;
-			}
+			len_print = -1;
+			while (len_print == -1)
+				len_print = print_format(str[++i], ap);
+			count_print += len_print;
+			i++;
+			continue ;
 		}
-		else
-			count += print_char(str[i]);
-		i++;
-		if (count < 0)
-			count = -1;
+		print_char(str[i++]);
+		count_print++;
 	}
 	va_end(ap);
-	return (count);
+	return (count_print);
 }
 /*
 int	main(void)
