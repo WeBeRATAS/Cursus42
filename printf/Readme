@@ -1,4 +1,5 @@
 ft_printf es un proyecto que imita la función printf real
+
 ft_printf
 ft_printfes una función que formatea e imprime la salida en stdout (típicamente la terminal). Toma una cadena de formato, que especifica cómo se debe formatear la salida, y un número variable de argumentos que contienen los valores que se imprimirán.
 
@@ -107,7 +108,3 @@ Finalmente, la función escribe la cadena en stdout llamando a la función de es
 
 La función devuelve el número de caracteres escritos, que es igual a la longitud de la cadena.
 
-Links utiles
-Funciones variádicas
-Variadic arguments
-Variadic functions
