@@ -6,7 +6,7 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:37:39 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/21 16:53:33 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:30:45 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	print_str(char *str)
 {
 	int		i;
+	int 	ctrl;
 
+	ctrl = 0;
 	if (!str)
 	{
 		if (write(1, "(null)", 6) < 0)
@@ -26,7 +28,8 @@ int	print_str(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (print_char(str[i]) < 0)
+		ctrl = print_char(str[i]);
+		if (ctrl == -1)
 			return (-1);
 		i++;
 	}

@@ -6,32 +6,68 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:36:46 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/17 14:45:50 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/23 13:21:58 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	p_digit(long n)
+
+int	ft_print_num(unsigned int n)
 {
 	int	size;
+	int ctrl;
 
 	size = 0;
-	if (n == 0)
-		size += print_char('0');
-	if (n == -2147483648)
+	ctrl = 0;
+	if (!n)
+		return (-1);
+	if (n / 10 != 0)
+		if (ft_print_num(n / 10) == -1)
+			return (-1);
+	ctrl = print_char((n % 10) + '0');
+	if (ctrl == -1)
+		return (-1);
+	while (n != 0)
 	{
-		size += print_str("-2147483648");
-		return (size);
+		n /= 10;
+		size++;
 	}
-	if (n < 0)
+	return (size);
+}
+
+int	p_digit(long n, int ctrl_uns)
+{
+	int	size;
+	int ctrl;
+
+	ctrl = 0;
+	size = 0;
+	if (ctrl_uns)
+		n = (unsigned int) n;
+	if (n == 0)
 	{
-		size += print_char('-');
-		n = -n;
+		if (print_char('0') < 0)
+			return (-1);
+		size = 1;
+	}
+	else
+	{
+		if (n < 0)
+		{
+			if (print_char('-') < 0)
+				return (-1);
+			size += 1;
+			n = -n;
+		}
 	}
 	if (n > 0)
-		size += print_unsigned((unsigned int)n);
-	return (size);
+	{
+		ctrl = ft_print_num(n);
+		if (ctrl == -1)
+			return (-1);
+	}
+	return (size + ctrl);	
 }
 /*
 int	main(void)

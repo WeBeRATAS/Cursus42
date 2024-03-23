@@ -6,31 +6,38 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:50:59 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/16 12:37:35 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/23 13:54:34 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_search_hexadecimal(unsigned int num, const char word)
+static int	ft_search_hexadecimal(unsigned int num, const char word)
 {
+	int ctrl;
+
+	ctrl = 0;
 	if (num >= 16)
 	{
 		ft_search_hexadecimal(num / 16, word);
 		ft_search_hexadecimal(num % 16, word);
 	}
-	else
+	else if (num < 10)
 	{
-		if (num < 10)
-			print_char(num + '0');
-		else
-		{
-			if (word == 'x')
-				print_char(num - 10 + 'a');
-			if (word == 'X')
-				print_char(num - 10 + 'A');
-		}
+		if ((print_char(num + '0')) < 0)
+				return (-1);
 	}
+	else if (word == 'x')
+	{
+		if (print_char(num - 10 + 'a') < 0)
+			return (-1);
+	}
+	if (word == 'X')
+	{
+		if (print_char(num - 10 + 'A') < 0)
+			return (-1);
+	}
+	return (0);
 }
 
 static int	ft_length_hexadecimal(unsigned int num)
@@ -38,6 +45,8 @@ static int	ft_length_hexadecimal(unsigned int num)
 	int	len;
 
 	len = 0;
+	if (num <= 15 && num >= 0)
+		return (1);
 	while (num != 0)
 	{
 		len++;
@@ -49,8 +58,12 @@ static int	ft_length_hexadecimal(unsigned int num)
 int	p_hexa(unsigned int num, const char word)
 {
 	if (num == 0)
-		return (print_char('0'));
+	{
+		if (print_char('0') < 0)
+			return (-1);
+	}
 	else
-		ft_search_hexadecimal(num, word);
+		if (ft_search_hexadecimal(num, word) == -1)
+			return (-1);
 	return (ft_length_hexadecimal(num));
 }

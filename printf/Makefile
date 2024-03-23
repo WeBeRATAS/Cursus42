@@ -6,7 +6,7 @@
 #    By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 12:09:04 by rbuitrag          #+#    #+#              #
-#    Updated: 2024/03/17 11:35:17 by rbuitrag         ###   ########.fr        #
+#    Updated: 2024/03/23 11:38:01 by rbuitrag         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ HEADER = ft_printf.h
 FLAGS = -Wall -Werror -Wextra -c
 
 FILES = ft_printf.c p_digit.c print_str.c print_char.c print_pointer.c \
-		ft_strchr.c p_hexa.c print_unsigned.c 
+		ft_strchr.c p_hexa.c
 
 OFILES = $(FILES:.c=.o)
 
