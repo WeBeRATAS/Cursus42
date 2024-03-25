@@ -6,7 +6,7 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:48:27 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/23 13:54:38 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:29:46 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,22 @@ static int	print_format(char type, va_list ap)
 
 static int	validate_str(const char *str, va_list ap)
 {
-	int	i;
 	int	control_s;
 	int	count;
 
-	i = 0;
 	control_s = 0;
 	count = 0;
-	while (str[i])
+	while (*str)
 	{
 		control_s = count;
-		if (str[i] == '%')
+		if (*str == '%')
 		{
-			//control_s = -1;
-			//while (control_s == -1)
-				count += print_format(str[++i], ap);
-			//count += control_s;
-			i++;
-			//continue ;
+			count += print_format(*(++str), ap);
+			str++;
 		}
 		else
 		{
-			if (print_char(str[i++]) < 0)
+			if (print_char(*str++) < 0)
 				return (-1);
 			count++;
 		}
@@ -88,7 +82,7 @@ int	main(void)
 {
 	ft_printf("x%i", -10);
 	count = ft_printf("hello %s\n", "Perraco");
-	ft_printf("The caracteres son MY %d\n", count);
+ft_printf("The caracteres son MY %d\n", count);
 	count = printf("hello %s\n", "Perraco");
 	printf("The caracteres con printf son %d\n", count);
 	count = ft_printf("Hex de Myprintf X %X\n", 42);

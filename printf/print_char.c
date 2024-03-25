@@ -6,7 +6,7 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 13:13:46 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/22 14:48:24 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:24:34 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_char(int c)
 {
-	int ctrl;
+	int	ctrl;
 
 	ctrl = 0;
 	ctrl = write(1, &c, 1);

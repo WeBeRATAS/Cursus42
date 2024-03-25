@@ -6,17 +6,16 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:36:46 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/23 13:21:58 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:34:19 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
 int	ft_print_num(unsigned int n)
 {
 	int	size;
-	int ctrl;
+	int	ctrl;
 
 	size = 0;
 	ctrl = 0;
@@ -36,30 +35,41 @@ int	ft_print_num(unsigned int n)
 	return (size);
 }
 
-int	p_digit(long n, int ctrl_uns)
+static int	ctrl_printchar(long n)
 {
 	int	size;
-	int ctrl;
 
-	ctrl = 0;
 	size = 0;
-	if (ctrl_uns)
-		n = (unsigned int) n;
 	if (n == 0)
 	{
 		if (print_char('0') < 0)
 			return (-1);
 		size = 1;
 	}
-	else
+	if (n < 0)
 	{
-		if (n < 0)
-		{
-			if (print_char('-') < 0)
-				return (-1);
-			size += 1;
-			n = -n;
-		}
+		if (print_char('-') < 0)
+			return (-1);
+		size = 1;
+	}
+	return (size);
+}
+
+int	p_digit(long n, int ctrl_uns)
+{
+	int	size;
+	int	ctrl;
+
+	ctrl = 0;
+	size = 0;
+	if (ctrl_uns)
+		n = (unsigned int) n;
+	if (ctrl_printchar(n) == -1)
+		return (-1);
+	else if (n < 0 || n == 0)
+	{
+		size += 1;
+		n = -n;
 	}
 	if (n > 0)
 	{
@@ -67,7 +77,7 @@ int	p_digit(long n, int ctrl_uns)
 		if (ctrl == -1)
 			return (-1);
 	}
-	return (size + ctrl);	
+	return (size + ctrl);
 }
 /*
 int	main(void)
@@ -75,12 +85,8 @@ int	main(void)
 	int	num;
 	int	cont;
 
-	num = -10;
+	num = 10;
 	cont = 0;
-	cont = printf("Numero %d\n", num);
-	printf("cont de printf: %d\n", cont);
-	cont = 0;
-	cont = p_digit(num);
-	printf("\ncont de pdigit: %d\n", cont);
+	p_digit(num, 0);
 	return (0);
 }*/

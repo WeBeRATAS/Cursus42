@@ -6,7 +6,7 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:37:39 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/22 14:30:45 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:24:51 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	print_str(char *str)
 {
-	int		i;
-	int 	ctrl;
+	int	i;
+	int	ctrl;
 
 	ctrl = 0;
 	if (!str)
