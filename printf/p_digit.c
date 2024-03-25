@@ -6,13 +6,13 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:36:46 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/25 17:34:19 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:45:01 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_num(unsigned int n)
+static int	ft_print_num(unsigned int n)
 {
 	int	size;
 	int	ctrl;

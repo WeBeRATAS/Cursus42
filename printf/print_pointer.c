@@ -6,13 +6,13 @@
 /*   By: rbuitrag <rbuitrag@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:55:30 by rbuitrag          #+#    #+#             */
-/*   Updated: 2024/03/25 17:25:28 by rbuitrag         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:45:44 by rbuitrag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_ptr_len(uintptr_t num)
+static int	ft_ptr_len(uintptr_t num)
 {
 	int	len;
 
@@ -25,7 +25,7 @@ int	ft_ptr_len(uintptr_t num)
 	return (len);
 }
 
-void	ft_put_ptr(uintptr_t num)
+static void	ft_put_ptr(uintptr_t num)
 {
 	if (num >= 16)
 	{
